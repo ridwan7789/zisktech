@@ -49,7 +49,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
@@ -88,18 +88,34 @@ export const HeroSection = () => {
         <div className="flex flex-col items-center text-center">
           {/* Logo */}
           <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, type: "spring" }}
-            className="mb-8"
+            initial={{ scale: 0, opacity: 0, rotateY: 90 }}
+            animate={{
+              scale: 1,
+              opacity: 1,
+              rotateY: 0
+            }}
+            transition={{
+              duration: 0.8,
+              type: "spring",
+              delay: 0.2
+            }}
+            className="mb-8 mt-20 cursor-pointer"
+            whileHover={{
+              rotateY: [0, 360],
+              transition: {
+                duration: 1.5,
+                repeat: Infinity,
+                repeatType: "loop"
+              }
+            }}
           >
             <div className="relative">
               <img
                 src={ziskLogo}
                 alt="Zisk Tech Logo"
-                className="w-32 h-32 md:w-40 md:h-40 animate-pulse-glow"
+                className="w-24 h-24 md:w-32 md:h-32 animate-pulse-glow"
               />
-              <div className="absolute inset-0 w-32 h-32 md:w-40 md:h-40 bg-secondary/30 rounded-full blur-2xl -z-10" />
+              <div className="absolute inset-0 w-24 h-24 md:w-32 md:h-32 bg-secondary/30 rounded-full blur-2xl -z-10" />
             </div>
           </motion.div>
 

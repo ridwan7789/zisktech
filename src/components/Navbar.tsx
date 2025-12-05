@@ -45,7 +45,20 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
-            <img src={ziskLogo} alt="Zisk Tech" className="w-10 h-10" />
+            <motion.img
+              src={ziskLogo}
+              alt="Zisk Tech"
+              className="w-10 h-10"
+              animate={{
+                rotateY: [0, 360],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                repeatType: "loop",
+                ease: "linear"
+              }}
+            />
             <span className="font-heading text-xl font-bold gradient-text hidden sm:inline">
               Zisk Tech
             </span>
