@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Check, Clock } from 'lucide-react';
+import roadmapVisual from '@/assets/roadmap-visual.png';
 
 const milestones = [
   {
@@ -42,7 +43,16 @@ export const RoadmapSection = () => {
 
   return (
     <section id="roadmap" className="py-24 relative overflow-hidden">
-      <div className="container mx-auto px-6">
+      {/* Background Visual */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-20">
+        <img 
+          src={roadmapVisual} 
+          alt="" 
+          className="w-full max-w-4xl object-contain"
+        />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 40 }}
@@ -60,7 +70,7 @@ export const RoadmapSection = () => {
 
         <div className="relative max-w-4xl mx-auto">
           {/* Timeline Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px">
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-px">
             <motion.div
               className="h-full"
               style={{

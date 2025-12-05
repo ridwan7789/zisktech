@@ -3,6 +3,7 @@ import { useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Terminal, Code, ArrowRight } from 'lucide-react';
+import developerVisual from '@/assets/developer-visual.png';
 
 const codeLines = [
   { text: '$ npm install @zisk/sdk', delay: 0 },
@@ -40,7 +41,15 @@ export const DeveloperSection = () => {
 
   return (
     <section id="developers" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src={developerVisual} 
+          alt="" 
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background" />
+      </div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -110,12 +119,12 @@ export const DeveloperSection = () => {
 
             {/* Decorative Elements */}
             <motion.div
-              className="absolute -top-4 -right-4 w-24 h-24 border border-primary/20 rounded-xl"
+              className="absolute -top-4 -right-4 w-24 h-24 border border-primary/20 rounded-xl hidden md:block"
               animate={{ rotate: [0, 10, 0] }}
               transition={{ duration: 6, repeat: Infinity }}
             />
             <motion.div
-              className="absolute -bottom-4 -left-4 w-16 h-16 border border-secondary/20 rounded-lg"
+              className="absolute -bottom-4 -left-4 w-16 h-16 border border-secondary/20 rounded-lg hidden md:block"
               animate={{ rotate: [0, -10, 0] }}
               transition={{ duration: 5, repeat: Infinity }}
             />
