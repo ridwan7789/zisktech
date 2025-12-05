@@ -2,17 +2,28 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 import ziskLogo from '@/assets/zisk-logo.png';
+import heroBg from '@/assets/hero-bg.png';
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden particle-bg">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src={heroBg} 
+          alt="" 
+          className="w-full h-full object-cover opacity-40"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/70 to-background" />
+      </div>
+
       {/* Gradient Orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
       
       {/* Floating Elements */}
       <motion.div
-        className="absolute top-20 right-20 w-32 h-32 border border-primary/30 rounded-2xl"
+        className="absolute top-20 right-20 w-32 h-32 border border-primary/30 rounded-2xl hidden lg:block"
         animate={{ 
           rotate: [0, 90, 180, 270, 360],
           y: [0, -20, 0]
@@ -21,7 +32,7 @@ export const HeroSection = () => {
         style={{ opacity: 0.3 }}
       />
       <motion.div
-        className="absolute bottom-40 left-20 w-20 h-20 border border-secondary/30 rounded-full"
+        className="absolute bottom-40 left-20 w-20 h-20 border border-secondary/30 rounded-full hidden lg:block"
         animate={{ 
           scale: [1, 1.2, 1],
           y: [0, -30, 0]

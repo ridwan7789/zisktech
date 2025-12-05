@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Zap, Shield, Layers } from 'lucide-react';
+import verificationOrb from '@/assets/verification-orb.png';
 
 const features = [
   {
@@ -44,21 +45,21 @@ export const AboutSection = () => {
           </p>
         </motion.div>
 
-        {/* Holographic Orb */}
+        {/* Holographic Orb Image */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={isInView ? { scale: 1, opacity: 1 } : {}}
           transition={{ delay: 0.3, duration: 1 }}
-          className="relative w-64 h-64 mx-auto mb-16"
+          className="relative w-64 h-64 md:w-80 md:h-80 mx-auto mb-16"
         >
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 via-secondary/20 to-accent/30 blur-xl animate-pulse" />
-          <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-primary/40 to-secondary/40 blur-lg" />
-          <div className="absolute inset-8 rounded-full border border-secondary/50 animate-spin-slow" />
-          <div className="absolute inset-12 rounded-full border border-primary/50 animate-spin-slow" style={{ animationDirection: 'reverse', animationDuration: '15s' }} />
-          <div className="absolute inset-16 rounded-full bg-gradient-to-br from-secondary/60 to-primary/60 blur-sm" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="font-heading text-4xl font-bold gradient-text">Z</span>
-          </div>
+          <motion.img 
+            src={verificationOrb} 
+            alt="Verification Orb" 
+            className="w-full h-full object-contain"
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20 rounded-full blur-2xl -z-10" />
         </motion.div>
 
         {/* Feature Cards */}

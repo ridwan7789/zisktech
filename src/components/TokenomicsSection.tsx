@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Coins, Lock, Vote, Sparkles, Shield, Bot } from 'lucide-react';
+import tokenVisual from '@/assets/token-visual.png';
 
 const distribution = [
   { name: 'Liquidity', percentage: 50, color: 'hsl(160, 100%, 48%)' },
@@ -70,7 +71,23 @@ export const TokenomicsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* Token Visual */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="flex justify-center mb-12"
+        >
+          <motion.img 
+            src={tokenVisual} 
+            alt="ZISK Token" 
+            className="w-48 h-48 md:w-64 md:h-64 object-contain"
+            animate={{ rotateY: [0, 360] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+          />
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Pie Chart */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -78,6 +95,9 @@ export const TokenomicsSection = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="relative"
           >
+            <h3 className="font-heading text-2xl font-bold mb-6 text-foreground text-center">
+              Token Distribution
+            </h3>
             <div className="relative w-64 h-64 mx-auto">
               <svg viewBox="0 0 200 200" className="w-full h-full transform -rotate-90">
                 {segments.map((segment) => (
@@ -139,7 +159,7 @@ export const TokenomicsSection = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
-            <h3 className="font-heading text-2xl font-bold mb-6 text-foreground">
+            <h3 className="font-heading text-2xl font-bold mb-6 text-foreground text-center lg:text-left">
               Token Utility
             </h3>
             <div className="grid grid-cols-2 gap-4">
