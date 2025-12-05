@@ -1,17 +1,26 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
+import { useState } from 'react';
 import ziskLogo from '@/assets/zisk-logo.png';
 import heroBg from '@/assets/hero-bg.png';
+import TestnetPopup from './TestnetPopup';
 
 export const HeroSection = () => {
+  const [showTestnetPopup, setShowTestnetPopup] = useState(false);
+
+  const handleTestnetClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowTestnetPopup(true);
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={heroBg} 
-          alt="" 
+        <img
+          src={heroBg}
+          alt=""
           className="w-full h-full object-cover opacity-40"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/70 to-background" />
@@ -20,11 +29,11 @@ export const HeroSection = () => {
       {/* Gradient Orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
-      
+
       {/* Floating Elements */}
       <motion.div
         className="absolute top-20 right-20 w-32 h-32 border border-primary/30 rounded-2xl hidden lg:block"
-        animate={{ 
+        animate={{
           rotate: [0, 90, 180, 270, 360],
           y: [0, -20, 0]
         }}
@@ -33,7 +42,7 @@ export const HeroSection = () => {
       />
       <motion.div
         className="absolute bottom-40 left-20 w-20 h-20 border border-secondary/30 rounded-full hidden lg:block"
-        animate={{ 
+        animate={{
           scale: [1, 1.2, 1],
           y: [0, -30, 0]
         }}
@@ -51,9 +60,9 @@ export const HeroSection = () => {
             className="mb-8"
           >
             <div className="relative">
-              <img 
-                src={ziskLogo} 
-                alt="Zisk Tech Logo" 
+              <img
+                src={ziskLogo}
+                alt="Zisk Tech Logo"
                 className="w-32 h-32 md:w-40 md:h-40 animate-pulse-glow"
               />
               <div className="absolute inset-0 w-32 h-32 md:w-40 md:h-40 bg-secondary/30 rounded-full blur-2xl -z-10" />
@@ -90,32 +99,19 @@ export const HeroSection = () => {
             transition={{ delay: 0.7, duration: 0.8 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <Button variant="neonGreen" size="xl">
+            <Button variant="neonGreen" size="xl" onClick={handleTestnetClick}>
               Join Testnet
             </Button>
-            <Button variant="neonPurple" size="xl">
-              Explore Documentation
-            </Button>
+            <a href="https://docs.zisktech.sbs" target="_blank" rel="noopener noreferrer">
+              <Button variant="neonPurple" size="xl">
+                Explore Documentation
+              </Button>
+            </a>
           </motion.div>
 
-          {/* Scroll Indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="flex flex-col items-center gap-2 text-muted-foreground"
-            >
-              <span className="text-sm">Scroll to explore</span>
-              <ChevronDown className="w-5 h-5 text-secondary" />
-            </motion.div>
-          </motion.div>
         </div>
       </div>
+      <TestnetPopup isOpen={showTestnetPopup} onClose={() => setShowTestnetPopup(false)} />
     </section>
   );
 };

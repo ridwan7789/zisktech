@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import ziskLogo from '@/assets/zisk-logo.png';
+import TestnetPopup from './TestnetPopup';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -16,6 +17,7 @@ const navLinks = [
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showTestnetPopup, setShowTestnetPopup] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +26,11 @@ export const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleTestnetClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowTestnetPopup(true);
+  };
 
   return (
     <motion.header
@@ -60,7 +67,7 @@ export const Navbar = () => {
 
           {/* CTA & Mobile Menu */}
           <div className="flex items-center gap-4">
-            <Button variant="neonGreen" size="sm" className="hidden sm:flex">
+            <Button variant="neonGreen" size="sm" className="hidden sm:flex" onClick={handleTestnetClick}>
               Join Testnet
             </Button>
             <button
@@ -93,13 +100,14 @@ export const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <Button variant="neonGreen" className="mt-4 sm:hidden">
+              <Button variant="neonGreen" className="mt-4 sm:hidden" onClick={handleTestnetClick}>
                 Join Testnet
               </Button>
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
+      <TestnetPopup isOpen={showTestnetPopup} onClose={() => setShowTestnetPopup(false)} />
     </motion.header>
   );
 };

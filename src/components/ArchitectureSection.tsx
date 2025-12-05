@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import architectureLayers from '@/assets/architecture-layers.png';
+import izkImage from '@/assets/izk.png';
 
 const layers = [
   { name: 'Zisk Application Layer', color: 'from-secondary to-secondary/70', description: 'User-facing applications and dApps' },
@@ -18,7 +18,7 @@ export const ArchitectureSection = () => {
   return (
     <section id="architecture" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 particle-bg opacity-50" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           ref={ref}
@@ -43,10 +43,11 @@ export const ArchitectureSection = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="relative"
           >
-            <motion.img 
-              src={architectureLayers} 
-              alt="Architecture Layers" 
-              className="w-full max-w-md mx-auto"
+            <motion.img
+              src={izkImage}
+              alt="IZK Architecture"
+              className="w-full max-w-md mx-auto object-contain"
+              style={{ background: 'transparent' }}
               animate={{ y: [0, -10, 0], rotateY: [0, 5, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             />

@@ -6,7 +6,6 @@ import { UseCasesSection } from '@/components/UseCasesSection';
 import { DeveloperSection } from '@/components/DeveloperSection';
 import { RoadmapSection } from '@/components/RoadmapSection';
 import { TokenomicsSection } from '@/components/TokenomicsSection';
-import { CommunitySection } from '@/components/CommunitySection';
 import { Footer } from '@/components/Footer';
 import { ParticleBackground } from '@/components/ParticleBackground';
 
@@ -23,7 +22,6 @@ const Index = () => {
         <DeveloperSection />
         <RoadmapSection />
         <TokenomicsSection />
-        <CommunitySection />
       </main>
       <Footer />
     </div>

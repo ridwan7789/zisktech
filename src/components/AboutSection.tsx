@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Zap, Shield, Layers } from 'lucide-react';
-import verificationOrb from '@/assets/verification-orb.png';
+import ziskImage from '@/assets/zisk.png';
 
 const features = [
   {
@@ -52,9 +52,9 @@ export const AboutSection = () => {
           transition={{ delay: 0.3, duration: 1 }}
           className="relative w-64 h-64 md:w-80 md:h-80 mx-auto mb-16"
         >
-          <motion.img 
-            src={verificationOrb} 
-            alt="Verification Orb" 
+          <motion.img
+            src={ziskImage}
+            alt="Zisk Technology"
             className="w-full h-full object-contain"
             animate={{ y: [0, -15, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
