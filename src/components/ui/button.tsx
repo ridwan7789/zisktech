@@ -17,6 +17,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         neonGreen: "bg-secondary text-secondary-foreground font-semibold hover:shadow-[0_0_30px_hsl(160_100%_48%/0.6)] hover:scale-105 active:scale-95",
         neonPurple: "border-2 border-primary bg-transparent text-foreground font-semibold hover:bg-primary/10 hover:shadow-[0_0_30px_hsl(252_100%_55%/0.4)] hover:scale-105 active:scale-95",
+        neonOrange: "border-2 border-orange-500 bg-transparent text-orange-400 font-semibold hover:bg-orange-500/10 hover:shadow-[0_0_30px_hsl(25_100%_50%/0.4)] hover:scale-105 active:scale-95",
         glass: "bg-card/30 backdrop-blur-md border border-border/50 text-foreground hover:bg-card/50 hover:border-primary/50",
       },
       size: {

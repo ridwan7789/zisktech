@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ChevronDown } from 'lucide-react';
+import { Copy, Check } from 'lucide-react';
 import { useState } from 'react';
 import ziskLogo from '@/assets/zisk-logo.png';
 import heroBg from '@/assets/hero-bg.png';
 import TestnetPopup from './TestnetPopup';
+import { toast } from '@/hooks/use-toast';
 
 export const HeroSection = () => {
   const [showTestnetPopup, setShowTestnetPopup] = useState(false);
@@ -12,6 +13,39 @@ export const HeroSection = () => {
   const handleTestnetClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setShowTestnetPopup(true);
+  };
+
+  const copyToClipboard = async (text: string) => {
+    try {
+      // Check if the Clipboard API is available
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        // Fallback method for insecure contexts or older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        await document.execCommand('copy');
+        document.body.removeChild(textArea);
+      }
+      toast({
+        title: "Copied to clipboard!",
+        description: "The CA address has been copied successfully.",
+        variant: "default",
+      });
+    } catch (error) {
+      console.error('Failed to copy text to clipboard:', error);
+      toast({
+        title: "Copy failed",
+        description: "Could not copy the address to clipboard.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -92,6 +126,28 @@ export const HeroSection = () => {
             <span className="text-accent">Infinite Possibility.</span>
           </motion.p>
 
+          {/* Official CA Address */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="mb-6 w-full max-w-lg"
+          >
+            <div className="flex items-center justify-center gap-2">
+              <span className="text-primary font-medium">$ZKTECH Official CA :</span>
+              <div
+                onClick={() => copyToClipboard("0xdBE191945f89b81200c0093d86682aC11D3170a8")}
+                className="flex items-center gap-2 bg-muted hover:bg-muted/80 rounded-lg px-3 py-2 font-mono text-sm cursor-pointer transition-colors"
+              >
+                <span className="text-primary">$</span>
+                <span className="truncate max-w-[200px] sm:max-w-[250px] md:max-w-[300px]">
+                  0xdBE191945f89b81200c0093d86682aC11D3170a8
+                </span>
+                <Copy className="h-4 w-4 text-primary flex-shrink-0" />
+              </div>
+            </div>
+          </motion.div>
+
           {/* CTAs */}
           <motion.div
             initial={{ y: 20, opacity: 0 }}
@@ -102,6 +158,17 @@ export const HeroSection = () => {
             <Button variant="neonGreen" size="xl" onClick={handleTestnetClick}>
               Join Testnet
             </Button>
+            <a href="https://pancakeswap.finance/swap?chain=bsc&outputCurrency=0xdBE191945f89b81200c0093d86682aC11D3170a8" target="_blank" rel="noopener noreferrer">
+              <Button
+                variant="neonOrange"
+                size="xl"
+                className="relative overflow-hidden group"
+              >
+                <span className="relative z-10">BUY $ZKTECH</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse" />
+              </Button>
+            </a>
             <a href="https://docs.zisktech.sbs" target="_blank" rel="noopener noreferrer">
               <Button variant="neonPurple" size="xl">
                 Explore Documentation
