@@ -169,6 +169,17 @@ export const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse" />
               </Button>
             </a>
+            <a href="https://www.dextools.io/app/en/bnb/pair-explorer/0xc1620844c9901419447091f8f0643423e6a6bc37?t=1764916394342" target="_blank" rel="noopener noreferrer">
+              <Button
+                variant="neonBlue"
+                size="xl"
+                className="relative overflow-hidden group"
+              >
+                <span className="relative z-10">$ZKTECH Chart</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse" />
+              </Button>
+            </a>
             <a href="https://docs.zisktech.sbs" target="_blank" rel="noopener noreferrer">
               <Button variant="neonPurple" size="xl">
                 Explore Documentation
